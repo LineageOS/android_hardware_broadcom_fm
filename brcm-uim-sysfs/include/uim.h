@@ -138,6 +138,9 @@ typedef struct {
     bdaddr_t addr;
 } __attribute__ ((packed)) uim_bdaddr_change_cmd;
 
+#ifdef HAS_UIM_BUILDCFG
+#include "uim_buildcfg.h"
+#else
 /* Sys_fs entry. The Line discipline driver sets this to 1 when bluedroid open BT protocol driver */
 /* Note: This entry is used in bt_hci_bdroid.c (Android source). Also present in
  *  brcm_sh_ldisc.c (v4l2_drivers) and board specific file (android kernel source) */
@@ -147,6 +150,8 @@ typedef struct {
 #define BDADDR_SYSFS_ENTRY  "/sys/devices/platform/bcm_ldisc/bdaddr"
 #define FW_PATCHFILE_SYSFS_ENTRY  "/sys/devices/platform/bcm_ldisc/fw_patchfile"
 #define LDISC_SYSFS_SNOOP     "/sys/devices/platform/bcm_ldisc/snoop_enable"
+
+#endif
 
 /* install sysfs entry values */
 #define V4L2_STATUS_ERR '2'  // error occured in BT application (HCI command timeout or HW error)
