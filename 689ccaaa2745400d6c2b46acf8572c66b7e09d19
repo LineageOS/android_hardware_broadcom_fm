@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_263c22e2",
+        "filename": "brcm-uim-sysfs/uim.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-02-02T17:54:20Z",
+      "side": 1,
+      "message": "Perhaps name this so it\u0027s obvious this is for FM/UIM and not BT?",
+      "range": {
+        "startLine": 484,
+        "startChar": 6,
+        "endLine": 484,
+        "endChar": 18
+      },
+      "revId": "689ccaaa2745400d6c2b46acf8572c66b7e09d19",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
