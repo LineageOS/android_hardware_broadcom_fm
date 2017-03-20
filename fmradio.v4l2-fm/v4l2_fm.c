@@ -268,7 +268,7 @@ int v4l2_is_playing_in_stereo (void ** session_data){
 
 int v4l2_scan (void ** session_data, enum fmradio_seek_direction_t direction){
    fm_v4l2_data* session;
-   int increment, rate, freqi, ret;
+   int increment, rate, freqi, ret, start_freq;
 
    ALOGI("%s:\n", __FUNCTION__);
    session = get_session_data(session_data);
@@ -279,6 +279,7 @@ int v4l2_scan (void ** session_data, enum fmradio_seek_direction_t direction){
    else                                      //FMRADIO_SEEK_UP
      increment =  session->grid;
 
+  start_freq = session->freq;
   freqi = session->freq + increment;         //drop the current frequency
   ALOGI("Starting scanning...\n");
   while (session->scan_band_run==SCAN_RUN){
@@ -306,6 +307,10 @@ int v4l2_scan (void ** session_data, enum fmradio_seek_direction_t direction){
          freqi =  session->low_freq;
       if ( freqi <  session->low_freq)
           freqi =  session->high_freq;
+      if ( freqi == start_freq )
+      {
+         break;
+      }
   }
   ALOGI("End scan\n");
   return 0;
