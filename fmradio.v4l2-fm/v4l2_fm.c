@@ -309,6 +309,7 @@ int v4l2_scan (void ** session_data, enum fmradio_seek_direction_t direction){
           freqi =  session->high_freq;
       if ( freqi == start_freq )
       {
+         session->scan_band_run=SCAN_STOP;
          break;
       }
   }
