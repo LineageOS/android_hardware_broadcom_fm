@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_840e4933",
+        "filename": "fmradio.v4l2-fm/v4l2_fm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-03-22T01:08:43Z",
+      "side": 1,
+      "message": "Nitpick, but you probably want your braces to be on the same line as the if statement.",
+      "revId": "0111af5645234439333fa182de5d0d5adbfc862a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_6413555d",
+        "filename": "fmradio.v4l2-fm/v4l2_fm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-03-22T01:08:43Z",
+      "side": 1,
+      "message": "You could return with an error code here, since this is kind of a strange situation to be in...",
+      "revId": "0111af5645234439333fa182de5d0d5adbfc862a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
