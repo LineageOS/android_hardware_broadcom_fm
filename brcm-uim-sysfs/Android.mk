@@ -24,6 +24,10 @@ endif
 
 LOCAL_CFLAGS += -DSYSFS_PREFIX=\"$(SYSFS_PREFIX)\"
 
+ifneq ($(BOARD_BRCM_HCI_NUM),)
+LOCAL_CFLAGS += -DBOARD_BRCM_HCI_NUM=$(BOARD_BRCM_HCI_NUM)
+endif
+
 LOCAL_MODULE := brcm-uim-sysfs
 LOCAL_MODULE_TAGS := optional
 ifeq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 25 ))" )))
