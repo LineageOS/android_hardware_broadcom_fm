@@ -41,7 +41,7 @@
 
 
 #include "jni.h"
-#include "JNIHelp.h"
+#include <nativehelper/JNIHelp.h>
 #include "android_fmradio_Receiver.h"
 #include <utils/Log.h>
 
