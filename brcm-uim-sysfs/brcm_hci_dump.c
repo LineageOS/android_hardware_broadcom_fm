@@ -384,7 +384,7 @@ static inline int is_signaled(fd_set* set)
 
 
 /* Read thread for snooping packets from Line discipline driver */
-static void* v4l2_hci_snoop_thread(void* parameters)
+static int v4l2_hci_snoop_thread(void* parameters)
 {
     HC_BT_HDR *p_buf = NULL;
     fd_set input;
