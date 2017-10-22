@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40ec9579_b4c85348",
+        "filename": "brcm-uim-sysfs/brcm_hci_dump.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-10-22T17:54:12Z",
+      "side": 1,
+      "message": "Maybe this change should be it\u0027s own separate patch?",
+      "range": {
+        "startLine": 387,
+        "startChar": 7,
+        "endLine": 387,
+        "endChar": 10
+      },
+      "revId": "f2270df42585da98efddddaf56d33b7f9ca51f5e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
