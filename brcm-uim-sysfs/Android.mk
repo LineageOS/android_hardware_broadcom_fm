@@ -15,7 +15,7 @@ LOCAL_SRC_FILES:= \
     utils.c
 
 LOCAL_CLANG := true
-LOCAL_CFLAGS:= -c -W -Wall -Wno-tautological-pointer-compare -O2 -D_POSIX_SOURCE -DUIM_DEBUG -DBLUEDROID_ENABLE_V4L2
+LOCAL_CFLAGS:= -c -W -Wall -Wno-int-conversion -Wno-tautological-pointer-compare -O2 -D_POSIX_SOURCE -DUIM_DEBUG -DBLUEDROID_ENABLE_V4L2
 LOCAL_SHARED_LIBRARIES:= libnetutils libcutils liblog
 
 LOCAL_MODULE := brcm-uim-sysfs
