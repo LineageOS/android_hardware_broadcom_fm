@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cddb2d2_dfc4a980",
+        "filename": "brcm-uim-sysfs/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-11-02T00:40:25Z",
+      "side": 1,
+      "message": "I wasn\u0027t even aware this was allowed anymore.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "9a6d33fca2fb105717d6bf11ebfc35340a6d9cc7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
