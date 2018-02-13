@@ -174,12 +174,13 @@ extern int init_module(void *, unsigned int, const char *);
 extern int delete_module(const char *, unsigned int);
 
 /* Function declarations */
+#ifdef ANDROID
+void read_default_bdaddr(bdaddr_t *local_addr);
+#endif
 void proc_init_uart(int uart_fd, struct termios *termios);
 int st_uart_config(unsigned char install);
 int proc_hci_reset();
 extern int upio_set_bluetooth_power(int on);
 int proc_hci_uartclockset();
-void read_default_bdaddr();
-int proc_bdaddr();
 
 #endif /* UIM_H */
