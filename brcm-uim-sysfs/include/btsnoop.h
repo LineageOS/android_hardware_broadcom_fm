@@ -61,11 +61,5 @@ typedef struct
 #define MSG_FM_TO_HC_HCI_CMD           0x4000
 #define MSG_HC_TO_FM_HCI_EVT           0x3000
 
-void btsnoop_capture(HC_BT_HDR *p_buf, uint8_t is_rcvd);
-void btsnoop_open(char *p_path);
-void btsnoop_init(void);
-void btsnoop_close(void);
-void btsnoop_cleanup (void);
-
 #endif
 
