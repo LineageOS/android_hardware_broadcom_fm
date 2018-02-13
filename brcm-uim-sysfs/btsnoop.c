@@ -40,7 +40,6 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <netdb.h>
-#include <string.h>
 
 /* for gettimeofday */
 #include <sys/time.h>
@@ -493,7 +492,7 @@ static int ext_parser_accept(int port)
         return -1;
     }
 
-    memset(&servaddr, 0, sizeof(servaddr));
+    bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family      = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port        = htons(port);

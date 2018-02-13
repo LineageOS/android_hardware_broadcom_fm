@@ -217,27 +217,5 @@ uint8_t* utils_alloc (int size);
 *******************************************************************************/
 void utils_release(uint8_t* ptr);
 
-/*******************************************************************************
-**
-** Function        utils_get_count
-**
-** Description     Get number of allocated buffers
-**
-** Returns         None
-**
-*******************************************************************************/
-uint16_t utils_get_count();
-
-/*******************************************************************************
-**
-** Function        utils_get_count
-**
-** Description     Get number of allocated buffers
-**
-** Returns         None
-**
-*******************************************************************************/
-void* utils_get_first ();
-
 #endif /* UTILS_H */
 

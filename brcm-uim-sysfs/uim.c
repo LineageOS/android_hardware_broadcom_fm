@@ -47,9 +47,6 @@
 #include <sys/stat.h>
 #include <sys/utsname.h>
 #include <dirent.h>
-#include <malloc.h>
-#include <string.h>
-#include <ctype.h>
 
 #include "uim.h"
 #include "brcm_hci_dump.h"
@@ -86,7 +83,7 @@
 #define PERSIST_BDADDR_PROPERTY         "persist.service.bdroid.bdaddr"
 #define STACK_CONF_FILE "/etc/bluetooth/bt_stack.conf"
 #define FW_PATCH_FILENAME_MAXLEN 80
-#define fw_patchfile_path "/system/etc/firmware"
+#define fw_patchfile_path "/vendor/firmware"
 #define FW_PATCHFILE_EXTENSION      ".hcd"
 #define FW_PATCHFILE_EXTENSION_LEN  4
 #define HCI_EVT_CMD_CMPL_LOCAL_NAME_STRING 7
@@ -110,7 +107,7 @@ bdaddr_t bd_addr;
 static char hw_cfg_string[CFG_PARAM_STRING_SIZE] = {0}; /* pass as parameter to ldisc */
 static unsigned long cust_baud_rate = 3000000;
 static char driver_module_path[MAX_KMODULE_PATH_SIZE] = "/system/lib/modules/";
-static char uart_port_name[UART_PORT_NAME_SIZE] = "/dev/ttyHS0";
+static char uart_port_name[UART_PORT_NAME_SIZE] = "/dev/ttyS1";
 int lpmenable;
 int hci_snoop_enable = 0;
 char hci_snoop_path[HCI_SNOOP_PATH_LEN] = "/sdcard/btsnoop_hci.log";
@@ -144,8 +141,12 @@ int pass_vendor_params()
     if (fd_vendor_params > 0)
     {
         if(write(fd_vendor_params, hw_cfg_string, CFG_PARAM_STRING_SIZE) < 0)
+        {
+            close(fd_vendor_params);
             return UIM_FAIL;
+        }
 
+        close(fd_vendor_params);
         UIM_DBG("vendor params passed to ldisc");
         return 0;
     }
@@ -858,7 +859,7 @@ validate_baudrate(int baud_rate, int *value)
 *****************************************************************************/
 static int proc_set_lpm_param()
 {
-    const char hci_writesleepmode_cmd[] = {0x01, 0x27, 0xFC, 0x0C, 0x00,0x00,0x001,\
+    char hci_writesleepmode_cmd[] = {0x01, 0x27, 0xFC, 0x0C, 0x00,0x00,0x001,\
                                           0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
     char cmd[100];
     UIM_DBG("lpmenable %d",lpmenable);
@@ -1261,7 +1262,7 @@ int proc_bdaddr()
         UIM_ERR("unable to open %s (%s)", BDADDR_SYSFS_ENTRY,strerror(errno));
         res =  UIM_FAIL;
     }
-    if( fd )
+    if( fd > 0 )
         close(fd);
     return res;
 }
@@ -1544,10 +1545,14 @@ RE_POLL_TILL_POLL_ERR:
                 // handle HCI snoop
                 int fd_hcisnoop;
                 unsigned char snoop_enable;
-                fd_hcisnoop = open(LDISC_SYSFS_SNOOP, O_RDONLY);
-                read(fd_hcisnoop, &snoop_enable, 1);
-                UIM_DBG("snoop_enable = %c", snoop_enable);
-                close(fd_hcisnoop);
+                if ((fd_hcisnoop = open(LDISC_SYSFS_SNOOP, O_RDONLY)) < 0){
+                    UIM_ERR("unable to open %s", LDISC_SYSFS_SNOOP);
+                }
+                else {
+                    read(fd_hcisnoop, &snoop_enable, 1);
+                    UIM_DBG("snoop_enable = %c", snoop_enable);
+                    close(fd_hcisnoop);
+                }
                 if(hci_snoop_enable == 1 || snoop_enable=='1'
                     || (v4l2_get_hci_snoop_status() == HCI_SNOOP_RUNNING))
                     v4l2_stop_hci_snoop();

@@ -40,8 +40,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <malloc.h>
-#include <string.h>
+
 #include "utils.h"
 #include "btsnoop.h"
 #include "brcm_hci_dump.h"
@@ -131,7 +130,7 @@ HC_BT_HDR* acl_rx_frame_integrity_check_v4l2 (HC_BT_HDR *p_rcv_msg)
     if (utils_get_count())
     {
         uint16_t save_handle;
-        HC_BT_HDR *p_hdr = utils_get_first();
+        HC_BT_HDR *p_hdr = (HC_BT_HDR*)utils_get_first();
 
         BRCM_HCI_DUMP_DBG("In acl_rx_q.count");
 
@@ -409,7 +408,7 @@ static void* v4l2_hci_snoop_thread(void* parameters)
     if (sock_fd < 0)
     {
         BRCM_HCI_DUMP_ERR("Unable to create netlink socket");
-        return -1;
+        return (void*)-1;
     }
 
     memset(&src_addr, 0, sizeof(src_addr));
@@ -625,26 +624,18 @@ static void* v4l2_hci_snoop_thread(void* parameters)
 
 int hci_snoop_bkp_file()
 {
-    if (hci_snoop_path != NULL)
+    char new_path[256] = {0};
+
+    strcpy(new_path, hci_snoop_path);
+    strcat(new_path, ".old");
+    BRCM_HCI_DUMP_DBG("renaming file and creating backup");
+    if (rename(hci_snoop_path, new_path))
     {
-            char new_path[256] = {0};
-
-            strcpy(new_path, hci_snoop_path);
-            strcat(new_path, ".old");
-            BRCM_HCI_DUMP_DBG("renaming file and creating backup");
-            if (rename(hci_snoop_path, new_path))
-            {
-                BRCM_HCI_DUMP_ERR("logging():rename failed, %d", errno);
-            }
-            BRCM_HCI_DUMP_DBG("opening snoop file");
-            btsnoop_open(hci_snoop_path);
-            return 0;
+        BRCM_HCI_DUMP_ERR("logging():rename failed, %d", errno);
     }
-    else {
-        BRCM_HCI_DUMP_ERR("snoop file path is NULL");
-        return -1;
-    }
-
+    BRCM_HCI_DUMP_DBG("opening snoop file");
+    btsnoop_open(hci_snoop_path);
+    return 0;
 }
 
 int v4l2_start_hci_snoop()

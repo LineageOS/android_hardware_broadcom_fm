@@ -29,8 +29,6 @@
 #include <errno.h>
 #include <pthread.h>
 #include <time.h>
-#include <malloc.h>
-#include <string.h>
 #include "utils.h"
 
 /******************************************************************************
