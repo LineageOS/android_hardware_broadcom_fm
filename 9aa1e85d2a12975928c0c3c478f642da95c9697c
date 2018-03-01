@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "211d26fa_93669cbe",
+        "filename": "brcm-uim-sysfs/brcm_hci_dump.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-03-01T02:59:17Z",
+      "side": 1,
+      "message": "This is terrible!",
+      "revId": "9aa1e85d2a12975928c0c3c478f642da95c9697c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d14f5fe_69511707",
+        "filename": "brcm-uim-sysfs/uim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2018-03-01T02:59:17Z",
+      "side": 1,
+      "message": "this is probably going to be a gotcha",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "9aa1e85d2a12975928c0c3c478f642da95c9697c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
