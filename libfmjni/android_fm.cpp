@@ -811,7 +811,6 @@ int androidFmRadioMute(struct FmSession_t *session_p, int mute)
 
     retval = session_p->vendorMethods_p->mute(&session_p->vendorData_p, mute);
 
-    drop_lock:
     if (retval == FMRADIO_INVALID_STATE) {
         THROW_INVALID_STATE(session_p);
     } else if (retval < 0) {
