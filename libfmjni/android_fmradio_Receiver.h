@@ -110,7 +110,7 @@ struct FmSession_t {
     struct ThreadCtrl_t *signalStrengthThreadCtrl_p;    /* RX Only */
 };
 
-#define FMRADIO_SET_STATE(_session_p,_newState) {int _oldState = (_session_p)->state; (_session_p)->state = _newState;}
+#define FMRADIO_SET_STATE(_session_p,_newState) {(_session_p)->state = _newState;}
 
 /* exceptions */
 

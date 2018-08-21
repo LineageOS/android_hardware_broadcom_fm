@@ -422,7 +422,7 @@ int v4l2_is_tuned_to_valid_channel (void ** session_data){
 
 int v4l2_get_rds(void * * session_data, struct fmradio_rds_bundle_t * fmradio_rds_bundle) {
   int ret = 1;
-  int bytesNum, i, j, blocknum, last_block_num, next_expected_block, group_status, group_type;
+  int bytesNum, i, blocknum, last_block_num, next_expected_block, group_status, group_type;
   char * buf, * group;
   char b0, b1, b2, b1_l5;
 

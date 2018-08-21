@@ -20,9 +20,12 @@ LOCAL_MODULE    := libfmjni
 LOCAL_SRC_FILES := android_fm.cpp \
                    android_fmradio_Receiver.cpp
 
+LOCAL_CFLAGS := \
+    -Wno-unused-function \
+
 ifneq ($(strip $(TARGET_ARCH)),arm64)
 LIBRARY_PATH:="/system/lib/"
-LOCAL_CFLAGS:= -DLIBRARY_PATH=\"$(LIBRARY_PATH)\"
+LOCAL_CFLAGS+= -DLIBRARY_PATH=\"$(LIBRARY_PATH)\"
 endif
 
 LOCAL_REQUIRED_MODULES := libfmradio.v4l2-fm brcm-uim-sysfs

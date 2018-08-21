@@ -698,8 +698,9 @@ jint setMute(JNIEnv *env, jobject thiz, jboolean mute)
 
 jint isRdsSupport(JNIEnv * __attribute__((unused)) env, jobject __attribute__((unused)) thiz)
 {
-    int ret = 0;
 /*
+    int ret = 0;
+
     ret = androidFmRadioRxIsRDSDataSupported(env, thiz);
     if (!ret) {
         ALOGE("%s, error, [ret=%d]\n", __func__, ret);
@@ -711,16 +712,19 @@ jint isRdsSupport(JNIEnv * __attribute__((unused)) env, jobject __attribute__((u
 
 jshort readRds(JNIEnv * __attribute__((unused)) env, jobject __attribute__((unused)) thiz)
 {
+/*
     int ret = 0;
-   // ALOGD("%s, [ret=%d]\n", __func__, ret);
+    ALOGD("%s, [ret=%d]\n", __func__, ret);
+*/
     return 0x0040; //Java: RDS_EVENT_LAST_RADIOTEXT
 }
 
 jint setRds(JNIEnv * __attribute__((unused)) env, jobject __attribute__((unused)) thiz, jboolean __attribute__((unused)) rdson)
 {
+/*
     int ret = 0;
     int onoff = -1;
-/*
+
     ret = androidFmRadioRxSetRDS(env, thiz, rdson);
     if (ret) {
         ALOGE("%s, error, [ret=%d]\n", __func__, ret);
